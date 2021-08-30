@@ -1,5 +1,8 @@
 export default {
   'menu.welcome': '欢迎',
+  'menu.app1': '欢迎1',
+  'menu.workflow': '工作流',
+  'menu.app2': 'app2',
   'menu.more-blocks': '更多区块',
   'menu.home': '首页',
   'menu.admin': '管理页',

@@ -33,8 +33,8 @@ export default defineConfig({
           // 'https://unpkg.com/browse/moment@2.25.3/moment.js',
           // 'https://cdn.jsdelivr.net/npm/lodash@4.17.19/lodash.js',
           // 'https://cdn.jsdelivr.net/npm/antd@4.5.2/dist/antd.js',
-          'https://gw.alipayobjects.com/os/lib/react/17.0.0/umd/react.development.js',
-          'https://gw.alipayobjects.com/os/lib/react-dom/17.0.0/umd/react-dom.development.js',
+          'https://gw.alipayobjects.com/os/lib/react/16.13.0/umd/react.development.js',
+          'https://gw.alipayobjects.com/os/lib/react-dom/16.13.0/umd/react-dom.development.js',
         ]
       : [
           // 'https://unpkg.com/browse/moment@2.25.3/min/moment.min.js',
@@ -103,7 +103,27 @@ export default defineConfig({
   nodeModulesTransform: {
     type: 'none',
   },
-  mfsu: {},
+  // mfsu: {},
   webpack5: {},
   exportStatic: {},
+  // mountElementId: 'root-master',
+  qiankun: {
+    master: {
+      // 注册子应用信息
+      apps: [
+        {
+          name: 'app1', // 唯一 id
+          entry: '//localhost:1114', // html entry
+        },
+        {
+          name: 'app2', // 唯一 id
+          entry: '//localhost:1113', // html entry
+        },
+        {
+          name: 'workflow', // 唯一 id
+          entry: '//localhost:8012/workFlow', // html entry
+        },
+      ],
+    },
+  },
 });

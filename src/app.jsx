@@ -1,11 +1,11 @@
 import { PageLoading } from '@ant-design/pro-layout';
-import { history, Link } from 'umi';
+import { history } from 'umi';
 import RightContent from '@/components/RightContent';
 import Footer from '@/components/Footer';
-import { BookOutlined, LinkOutlined } from '@ant-design/icons';
+// import { BookOutlined, LinkOutlined } from '@ant-design/icons';
 import { currentUser as queryCurrentUser } from './services/ant-design-pro/api';
 
-const isDev = process.env.NODE_ENV === 'development';
+// const isDev = process.env.NODE_ENV === 'development';
 const loginPath = '/user/login';
 /** 获取用户信息比较慢的时候会展示一个 loading */
 
@@ -58,21 +58,34 @@ export const layout = ({ initialState }) => {
         history.push(loginPath);
       }
     },
-    links: isDev
-      ? [
-          <Link to="/umi/plugin/openapi" target="_blank">
-            <LinkOutlined />
-            <span>OpenAPI 文档</span>
-          </Link>,
-          <Link to="/~docs">
-            <BookOutlined />
-            <span>业务组件文档</span>
-          </Link>,
-        ]
-      : [],
+
     menuHeaderRender: undefined,
     // 自定义 403 页面
     // unAccessible: <div>unAccessible</div>,
     ...initialState?.settings,
   };
 };
+
+// export const qiankun = fetch('/config').then(({ apps }) => {
+//   return {
+//     apps,
+//     routes: [
+//       {
+//         path: '/app1',
+//         microApp: 'app1',
+//       },
+//     ],
+//   };
+// });
+
+// export const qiankun = fetch('/config').then(({ apps }) => ({
+//   // 注册子应用信息
+//   apps,
+//   // 完整生命周期钩子请看 https://qiankun.umijs.org/zh/api/#registermicroapps-apps-lifecycles
+//   lifeCycles: {
+//     afterMount: (props) => {
+//       console.log(props);
+//     },
+//   },
+//   // 支持更多的其他配置，详细看这里 https://qiankun.umijs.org/zh/api/#start-opts
+// }));

@@ -1,15 +1,8 @@
-import {
-  AlipayCircleOutlined,
-  LockOutlined,
-  MobileOutlined,
-  TaobaoCircleOutlined,
-  UserOutlined,
-  WeiboCircleOutlined,
-} from '@ant-design/icons';
-import { Alert, Space, message, Tabs } from 'antd';
+import { LockOutlined, MobileOutlined, UserOutlined } from '@ant-design/icons';
+import { Alert, message, Tabs } from 'antd';
 import React, { useState } from 'react';
 import ProForm, { ProFormCaptcha, ProFormCheckbox, ProFormText } from '@ant-design/pro-form';
-import { useIntl, Link, history, FormattedMessage, SelectLang, useModel } from 'umi';
+import { useIntl, history, FormattedMessage, SelectLang, useModel } from 'umi';
 import Footer from '@/components/Footer';
 import { login } from '@/services/ant-design-pro/api';
 import { getFakeCaptcha } from '@/services/ant-design-pro/login';
@@ -42,6 +35,8 @@ const Login = () => {
   };
 
   const handleSubmit = async (values) => {
+    window.Authorization =
+      'Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2luZm8iOiIlN0IlMjJhdmF0YXIlMjIlM0ElMjIlMjIlMkMlMjJpbmR1c3RyeVR5cGUlMjIlM0ElMjJlZHVjYXRpb24lMjIlMkMlMjJsb2dpblR5cGUlMjIlM0ElMjJub3JtYWwlMjIlMkMlMjJvcmdJZCUyMiUzQTMwMDEwMDEwMDEwMDAwMDQlMkMlMjJvcmdOYW1lJTIyJTNBJTIyJUU2JUI1JThCJUU4JUFGJTk1JTIyJTJDJTIyb3JnVHlwZSUyMiUzQSUyMmdlbmVyYWwlMjIlMkMlMjJyZWdpb25Db2RlJTIyJTNBJTIyJTIyJTJDJTIydXNlcklkJTIyJTNBMTQyNzg5OTMyMDk2NzczNzM0NSUyQyUyMnVzZXJOYW1lJTIyJTNBJTIyJUU5JTk5JTg4JUU1JUE0JUE3JUU0JUJCJTk5JTIyJTJDJTIydXNlclR5cGUlMjIlM0ElMjJlbXBsb3llZSUyMiU3RCIsInVzZXJfbmFtZSI6IjEzMDUwNTE2MTExQEBub3JtYWwiLCJvcmdfaWQiOjMwMDEwMDEwMDEwMDAwMDQsInNjb3BlIjpbIndyaXRlIl0sImV4cCI6MTYzMDEwNTg1OSwianRpIjoiNjdkYzIxYWUtNDdjMS00NWZjLTg5NTQtNTkyNGVjZDc2Njk0IiwiY2xpZW50X2lkIjoiZGV2In0.nzkB06cBo50I-_NRbm5FpFtfG6d1a2_zu1qCDPLPA9R6DNAL0wYpxqr0go-cLxRXtlfkwXHArjr2YUTAmNra2jRjlfa3dV_-_raYkGHXLb9PEVWzydJmdY2U1AA73X0S89Y-06_L6VfsGeIG8UhhnPUQ3tSWXqtTn6s_pFKvioI';
     setSubmitting(true);
 
     try {
@@ -116,7 +111,6 @@ const Login = () => {
                   defaultMessage: '账户密码登录',
                 })}
               />
-     
             </Tabs>
 
             {status === 'error' && loginType === 'account' && (
@@ -278,7 +272,6 @@ const Login = () => {
               </a>
             </div>
           </ProForm>
-       
         </div>
       </div>
       <Footer />
