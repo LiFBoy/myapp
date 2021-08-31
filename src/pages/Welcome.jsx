@@ -1,6 +1,6 @@
 import React from 'react';
-import { PageContainer } from '@ant-design/pro-layout';
+// import { PageContainer } from '@ant-design/pro-layout';
 
 export default () => {
-  return <PageContainer>纟</PageContainer>;
+  return <div>纟</div>;
 };

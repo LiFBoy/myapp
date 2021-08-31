@@ -1,6 +1,6 @@
 import { useIntl } from 'umi';
-import { GithubOutlined } from '@ant-design/icons';
-import { DefaultFooter } from '@ant-design/pro-layout';
+// import { GithubOutlined } from '@ant-design/icons';
+// import { DefaultFooter } from '@ant-design/pro-layout';
 
 export default () => {
   const intl = useIntl();
@@ -10,7 +10,7 @@ export default () => {
   });
   const currentYear = new Date().getFullYear();
   return (
-    <DefaultFooter
+    <div
       copyright={`${currentYear} ${defaultMessage}`}
       links={[
         {

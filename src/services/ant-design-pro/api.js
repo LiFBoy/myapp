@@ -5,8 +5,12 @@ import { request } from 'umi';
 /** 获取当前的用户 GET /api/currentUser */
 
 export async function currentUser(options) {
-  return request('/api/currentUser', {
+  return request('https://community-dev.easyj.top/auth/oauth/loginInfo', {
     method: 'GET',
+    headers: {
+      // Authorization: window.Authorization
+      Authorization: `Bearer ${window.token}`,
+    },
     ...(options || {}),
   });
 }
@@ -15,20 +19,26 @@ export async function currentUser(options) {
 export async function outLogin(options) {
   return request('/api/login/outLogin', {
     method: 'POST',
+    headers: {
+      // Authorization: window.Authorization
+      Authorization: `Bearer ${window.token}`,
+    },
     ...(options || {}),
   });
 }
 /** 登录接口 POST /api/login/account */
 
 export async function login(body, options) {
-  return request('/api/login/account', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
+  return request(
+    'https://community-dev.easyj.top/auth/oauth/token?client_id=dev&client_secret=dev&grant_type=password&from=normal&username=13050516111&password=123456',
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      data: body,
     },
-    data: body,
-    ...(options || {}),
-  });
+  );
 }
 /** 此处后端没有提供注释 GET /api/notices */
 

@@ -16,13 +16,16 @@ export default defineConfig({
   history: {
     type: 'browser',
   },
+  // qiankun: {
+  //   slave: {},
+  // },
 
   externals: {
     react: 'window.React',
     'react-dom': 'window.ReactDOM',
     // moment: 'moment',
     // lodash: '_',
-    antd: 'antd',
+    // antd: 'antd',
   },
 
   // 引入被 external 库的 scripts
@@ -48,12 +51,13 @@ export default defineConfig({
   //     ? ['https://cdn.jsdelivr.net/npm/antd@4.5.2/dist/antd.css']
   //     : ['https://cdn.jsdelivr.net/npm/antd@4.5.2/dist/antd.min.css'],
 
-  layout: {
-    // https://umijs.org/zh-CN/plugins/plugin-layout
-    locale: true,
-    siderWidth: 208,
-    ...defaultSettings,
-  },
+  // layout: {
+  //   // https://umijs.org/zh-CN/plugins/plugin-layout
+  //   locale: true,
+  //   siderWidth: 208,
+  //   ...defaultSettings,
+  // },
+  layout: false,
   // https://umijs.org/zh-CN/plugins/plugin-locale
   locale: {
     // default zh-CN
@@ -66,6 +70,9 @@ export default defineConfig({
     loading: '@/components/PageLoading/index',
   },
 
+  define: {
+    _SERVER_ENV: process.env.NODE_ENV,
+  },
   targets: {
     ie: 11,
   },
@@ -106,24 +113,24 @@ export default defineConfig({
   // mfsu: {},
   webpack5: {},
   exportStatic: {},
-  // mountElementId: 'root-master',
-  qiankun: {
-    master: {
-      // 注册子应用信息
-      apps: [
-        {
-          name: 'app1', // 唯一 id
-          entry: '//localhost:1114', // html entry
-        },
-        {
-          name: 'app2', // 唯一 id
-          entry: '//localhost:1113', // html entry
-        },
-        {
-          name: 'workflow', // 唯一 id
-          entry: '//localhost:8012/workFlow', // html entry
-        },
-      ],
-    },
-  },
+  mountElementId: 'sub-app-container',
+  // qiankun: {
+  //   master: {
+  //     // 注册子应用信息
+  //     apps: [
+  //       {
+  //         name: 'app1', // 唯一 id
+  //         entry: '//localhost:1114', // html entry
+  //       },
+  //       {
+  //         name: 'app2', // 唯一 id
+  //         entry: '//localhost:1113', // html entry
+  //       },
+  //       {
+  //         name: 'workflow', // 唯一 id
+  //         entry: '//localhost:8012', // html entry
+  //       },
+  //     ],
+  //   },
+  // },
 });

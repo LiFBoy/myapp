@@ -1,3 +1,5 @@
-import { PageLoading } from '@ant-design/pro-layout';
+function D() {
+  return <div>222</div>;
+}
 
-export default PageLoading;
+export default D;

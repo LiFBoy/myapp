@@ -1,0 +1,51 @@
+// 全局样式
+// @author Pluto <huarse@gmail.com>
+// @create 2020/06/03 01:31
+
+html,body {
+  height: 100%;
+  font-family: PingFang SC,Verdana,Helvetica Neue,Microsoft Yahei,Hiragino Sans GB,"Microsoft Sans Serif",WenQuanYi Micro Hei,sans-serif !important;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a:focus {
+  text-decoration: none;
+}
+
+#sub-app-container, .nbugs-container-layout {
+  height: 100%;
+}
+
+.flex-inline {
+  display: inline-flex;
+  align-items: center;
+}
+
+.flex-bt {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  > h1, > h2, > h3, > h4, > h5, > h6 {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+.text-nowrap {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ellipsis-span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

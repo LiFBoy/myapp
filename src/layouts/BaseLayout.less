@@ -1,0 +1,38 @@
+.nbugs-main-container-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #999;
+  background-color: #fff;
+
+  .img-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+
+    > img {
+      display: block;
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+}
+
+@sub-app-viewport-height: calc(100vh - 56px);
+:global {
+  #sub-app-viewport {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: stretch;
+    height: @sub-app-viewport-height;
+    max-height: @sub-app-viewport-height;
+    > * {
+      height: 100%;
+    }
+  }
+}

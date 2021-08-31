@@ -28,6 +28,7 @@ const Login = () => {
 
   const fetchUserInfo = async () => {
     const userInfo = await initialState?.fetchUserInfo?.();
+    console.log(userInfo, 'userInfo')
 
     if (userInfo) {
       await setInitialState((s) => ({ ...s, currentUser: userInfo }));
@@ -35,19 +36,20 @@ const Login = () => {
   };
 
   const handleSubmit = async (values) => {
-    window.Authorization =
-      'Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2luZm8iOiIlN0IlMjJhdmF0YXIlMjIlM0ElMjIlMjIlMkMlMjJpbmR1c3RyeVR5cGUlMjIlM0ElMjJlZHVjYXRpb24lMjIlMkMlMjJsb2dpblR5cGUlMjIlM0ElMjJub3JtYWwlMjIlMkMlMjJvcmdJZCUyMiUzQTMwMDEwMDEwMDEwMDAwMDQlMkMlMjJvcmdOYW1lJTIyJTNBJTIyJUU2JUI1JThCJUU4JUFGJTk1JTIyJTJDJTIyb3JnVHlwZSUyMiUzQSUyMmdlbmVyYWwlMjIlMkMlMjJyZWdpb25Db2RlJTIyJTNBJTIyJTIyJTJDJTIydXNlcklkJTIyJTNBMTQyNzg5OTMyMDk2NzczNzM0NSUyQyUyMnVzZXJOYW1lJTIyJTNBJTIyJUU5JTk5JTg4JUU1JUE0JUE3JUU0JUJCJTk5JTIyJTJDJTIydXNlclR5cGUlMjIlM0ElMjJlbXBsb3llZSUyMiU3RCIsInVzZXJfbmFtZSI6IjEzMDUwNTE2MTExQEBub3JtYWwiLCJvcmdfaWQiOjMwMDEwMDEwMDEwMDAwMDQsInNjb3BlIjpbIndyaXRlIl0sImV4cCI6MTYzMDEwNTg1OSwianRpIjoiNjdkYzIxYWUtNDdjMS00NWZjLTg5NTQtNTkyNGVjZDc2Njk0IiwiY2xpZW50X2lkIjoiZGV2In0.nzkB06cBo50I-_NRbm5FpFtfG6d1a2_zu1qCDPLPA9R6DNAL0wYpxqr0go-cLxRXtlfkwXHArjr2YUTAmNra2jRjlfa3dV_-_raYkGHXLb9PEVWzydJmdY2U1AA73X0S89Y-06_L6VfsGeIG8UhhnPUQ3tSWXqtTn6s_pFKvioI';
+
     setSubmitting(true);
 
     try {
       // 登录
       const msg = await login({ ...values, type });
+      console.log(msg, 'msg')
 
-      if (msg.status === 'ok') {
+      if (msg.code === 0) {
         const defaultLoginSuccessMessage = intl.formatMessage({
           id: 'pages.login.success',
           defaultMessage: '登录成功！',
         });
+        window.token = msg?.data?.accessToken
         message.success(defaultLoginSuccessMessage);
         await fetchUserInfo();
         /** 此方法会跳转到 redirect 参数所在的位置 */
@@ -153,7 +155,7 @@ const Login = () => {
                   }}
                   placeholder={intl.formatMessage({
                     id: 'pages.login.password.placeholder',
-                    defaultMessage: '密码: ant.design',
+                    defaultMessage: '密码: 1',
                   })}
                   rules={[
                     {
